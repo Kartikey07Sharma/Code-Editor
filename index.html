@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Sync</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Home Page -->
+  <div class="homePageWrapper" id="homePage">
+    <div class="formWrapper">
+      <img class="homePageLogo" src="code-sync.png" alt="Code Sync Logo">
+      <h4 class="mainLabel">Paste invitation ROOM ID</h4>
+      <div class="inputGroup">
+        <input type="text" id="roomIdInput" class="inputBox" placeholder="ROOM ID">
+        <input type="text" id="usernameInput" class="inputBox" placeholder="USERNAME">
+        <button class="btn joinBtn" id="joinBtn">Join</button>
+        <span class="createInfo">
+          If you don't have an invite then create &nbsp;
+          <a href="#" class="createNewBtn" id="createNewBtn">new room</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editor and Chat Page -->
+  <div class="mainWrap" id="editorPage" style="display: none;">
+    <!-- Sidebar -->
+    <div class="asideWrap">
+      <div class="logo">
+        <img class="logoImage" src="code-sync.png" alt="Code Sync Logo">
+      </div>
+      <div class="asideInner">
+        <div class="clientsList" id="clientsList">
+          <!-- List of connected clients will be displayed here -->
+        </div>
+      </div>
+      <button class="btn leaveBtn" id="leaveBtn">Leave</button>
+    </div>
+
+    <!-- Editor Section -->
+    <div class="editorWrap">
+
+      <!-- Language Selection + Run + Save Buttons -->
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <select class="seLang" id="languageSelect">
+          <option value="cpp">C++</option>
+          <option value="c">C</option>
+          <option value="python">Python</option>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="JAVASCRIPT">JavaScript</option>
+          <option value="GO">Go</option>
+          <option value="JAVA">Java</option>
+        </select>
+        <div>
+          <button class="btn runBtn" id="runBtn" style="margin-left: 10px;">Run</button>
+          <button class="btn runBtn" id="saveBtn" style="margin-left: 10px; background: #4aed88;">Save</button>
+
+        </div>
+      </div>
+
+      <!-- Code Editor -->
+      <div id="editorContainer" style="height: 70vh; width: 100%"></div>
+
+      <!-- Terminal Output -->
+      <div id="terminalOutput" class="terminalOutput textarea-style">Output will appear here...</div>
+
+      <!-- Optional Input Box (can be removed if unused) -->
+      <div class="IO-container">
+        <textarea id="inputArea" class="inputArea textarea-style" placeholder="Input..."></textarea>
+      </div>
+    </div>
+
+    <!-- Chat Section -->
+    <div class="chatWrap">
+      <div id="chatArea" class="chatArea textarea-style"></div>
+      <div class="sendChatWrap">
+        <input type="text" id="chatInput" class="inputBox" placeholder="Type message...">
+        <button class="btn sendBtn" id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/umd/uuidv4.min.js"></script>
+  <!-- Monaco Editor -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+  <script src="client.js" type="module"></script>
+</body>
+</html>
